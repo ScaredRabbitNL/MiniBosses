@@ -1,0 +1,8 @@
+#Plugin stuff
+Prefix: "&#fb0000&lM&#fb1200&li&#fc2500&ln&#fc3700&li&#fd4900&lB&#fd5c00&lo&#fe6e00&ls&#fe8000&ls&#ff9300&le&#ffa500&ls &8&l» "
+
+#Which mobs should be op?
+isZombieMiniBossEnabled: false
+
+#Armor / Tools
+opMobsUseMaterial: 'NETHERITE'

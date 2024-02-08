@@ -3,6 +3,7 @@ package net.scaredrabbit.minibosses.command.subcommands;
 import net.kyori.adventure.text.Component;
 import net.scaredrabbit.minibosses.Main;
 import net.scaredrabbit.minibosses.command.SubCommand;
+import net.scaredrabbit.minibosses.config.CustomConfig;
 import net.scaredrabbit.minibosses.util.ColorUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -31,9 +32,12 @@ public class ReloadCommand extends SubCommand {
 
     @Override
     public void perform(Player p, String[] args) {
+        CustomConfig.setup();
+
         plugin.reloadConfig();
         plugin.saveDefaultConfig();
-        p.sendMessage(ColorUtil.translateColorCodes(plugin.getConfig().getString("Prefix") + ChatColor.GREEN + "Reloaded the config"));
+
+        p.sendMessage(ColorUtil.translateColorCodes(CustomConfig.get().getString("Prefix") + CustomConfig.get().getString("ConfigReload")));
 
     }
 

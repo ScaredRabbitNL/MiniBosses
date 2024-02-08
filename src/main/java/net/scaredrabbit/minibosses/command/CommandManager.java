@@ -1,6 +1,9 @@
 package net.scaredrabbit.minibosses.command;
 
+import net.scaredrabbit.minibosses.command.subcommands.HelpCommand;
 import net.scaredrabbit.minibosses.command.subcommands.ReloadCommand;
+import net.scaredrabbit.minibosses.config.CustomConfig;
+import net.scaredrabbit.minibosses.util.ColorUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,11 +14,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CommandManager implements TabExecutor {
     private final ArrayList<SubCommand> subCommands = new ArrayList<>();
     public CommandManager(){
         subCommands.add(new ReloadCommand());
+        subCommands.add(new HelpCommand());
     }
 
 
@@ -24,6 +29,11 @@ public class CommandManager implements TabExecutor {
 
         if (sender instanceof Player){
             Player p = (Player) sender;
+
+            p.sendMessage(ColorUtil.translateColorCodes("&e================ " + CustomConfig.get().getString("HelpPrefix") + "&e=================="));
+            p.sendMessage(ColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandReload"))));
+            p.sendMessage(ColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandHelp"))));
+            p.sendMessage(ColorUtil.translateColorCodes("&e================ " + CustomConfig.get().getString("HelpPrefix") + "&e=================="));
 
             if (args.length > 0){
                 for (int i = 0; i < getSubCommands().size(); i ++) {

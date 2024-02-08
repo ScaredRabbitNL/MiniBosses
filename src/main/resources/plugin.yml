@@ -1,0 +1,8 @@
+name: MiniBosses
+version: '${project.version}'
+main: net.scaredrabbit.minibosses.Main
+api-version: '1.20'
+commands:
+   minibosses:
+     description: "Main command for the plugin"
+     aliases: mb

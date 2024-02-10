@@ -2,7 +2,8 @@ package net.scaredrabbit.minibosses.command.subcommands;
 
 import net.scaredrabbit.minibosses.command.SubCommand;
 import net.scaredrabbit.minibosses.config.CustomConfig;
-import net.scaredrabbit.minibosses.util.ColorUtil;
+import net.scaredrabbit.minibosses.util.IColorUtil;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -25,11 +26,11 @@ public class HelpCommand extends SubCommand {
     }
 
     @Override
-    public void perform(Player p, String[] args) {
-        p.sendMessage(ColorUtil.translateColorCodes("&e=================== " + CustomConfig.get().getString("HelpPrefix") + "&e====================="));
-        p.sendMessage(ColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandReload"))));
-        p.sendMessage(ColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandHelp"))));
-        p.sendMessage(ColorUtil.translateColorCodes("&e=================== " + CustomConfig.get().getString("HelpPrefix") + "&e====================="));
+    public void perform(Player p, String[] args, CommandSender sender) {
+        p.sendMessage(IColorUtil.translateColorCodes("&e=================== " + CustomConfig.get().getString("HelpPrefix") + "&e====================="));
+        p.sendMessage(IColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandReload"))));
+        p.sendMessage(IColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandHelp"))));
+        p.sendMessage(IColorUtil.translateColorCodes("&e=================== " + CustomConfig.get().getString("HelpPrefix") + "&e====================="));
 
 
     }

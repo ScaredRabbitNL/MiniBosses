@@ -1,11 +1,11 @@
 package net.scaredrabbit.minibosses.command;
 
+import net.scaredrabbit.minibosses.command.subcommands.DifficultyCommand;
 import net.scaredrabbit.minibosses.command.subcommands.HelpCommand;
 import net.scaredrabbit.minibosses.command.subcommands.ReloadCommand;
 import net.scaredrabbit.minibosses.config.CustomConfig;
-import net.scaredrabbit.minibosses.util.ColorUtil;
+import net.scaredrabbit.minibosses.util.IColorUtil;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
@@ -21,6 +21,7 @@ public class CommandManager implements TabExecutor {
     public CommandManager(){
         subCommands.add(new ReloadCommand());
         subCommands.add(new HelpCommand());
+        subCommands.add(new DifficultyCommand());
     }
 
 
@@ -30,23 +31,23 @@ public class CommandManager implements TabExecutor {
         if (sender instanceof Player){
             Player p = (Player) sender;
 
-            p.sendMessage(ColorUtil.translateColorCodes("&e================ " + CustomConfig.get().getString("HelpPrefix") + "&e=================="));
-            p.sendMessage(ColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandReload"))));
-            p.sendMessage(ColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandHelp"))));
-            p.sendMessage(ColorUtil.translateColorCodes("&e================ " + CustomConfig.get().getString("HelpPrefix") + "&e=================="));
 
             if (args.length > 0){
                 for (int i = 0; i < getSubCommands().size(); i ++) {
                     if (args[0].equalsIgnoreCase(getSubCommands().get(i).getName())){
-                        getSubCommands().get(i).perform(p, args);
+                        getSubCommands().get(i).perform(p, args,sender);
                     }
                 }
+            } else if (args.length == 0) {
+                p.sendMessage(IColorUtil.translateColorCodes("&e================ " + CustomConfig.get().getString("HelpPrefix") + "&e=================="));
+                p.sendMessage(IColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandReload"))));
+                p.sendMessage(IColorUtil.translateColorCodes(Objects.requireNonNull(CustomConfig.get().getString("HelpCommandHelp"))));
+                p.sendMessage(IColorUtil.translateColorCodes("&e================ " + CustomConfig.get().getString("HelpPrefix") + "&e=================="));
+
+
             }
 
         }
-
-
-
 
         return true;
     }

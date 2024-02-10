@@ -6,10 +6,11 @@
 
   <groupId>net.scaredrabbit</groupId>
   <artifactId>MiniBosses</artifactId>
-  <version>1.1.5-dev</version>
+  <version>1.2.0-dev</version>
   <packaging>jar</packaging>
-
   <name>MiniBosses</name>
+
+
 
   <properties>
     <java.version>1.8</java.version>

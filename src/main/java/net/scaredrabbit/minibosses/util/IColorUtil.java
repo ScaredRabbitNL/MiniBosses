@@ -3,7 +3,7 @@ package net.scaredrabbit.minibosses.util;
 
 import org.bukkit.ChatColor;
 
-public class ColorUtil {
+public class IColorUtil {
     /**
      * All credits for this go to @KodySimpson on youtube
      * <a href="https://www.youtube.com/c/KodySimpson">...</a>

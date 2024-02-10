@@ -1,6 +1,7 @@
 name: MiniBosses
 version: '${project.version}'
 main: net.scaredrabbit.minibosses.Main
+author: ScaredRabbitNL
 api-version: '1.20'
 commands:
    minibosses:

@@ -1,5 +1,18 @@
 #Which mobs should be op?
 isZombieMiniBossEnabled: false
+isZombieVillagerMiniBossEnabled: false
+isSkeletonMiniBossEnabled: false
+isCreeperMiniBossEnabled: false
 
 #Armor / Tools
-opMobsUseMaterial: 'NETHERITE'
+opMobsUseMaterial: 'DIAMOND'
+isSwordEnabled: false
+isBowEnabled: false
+
+helmetDropChance: 100
+chestPlateDropChance: 100
+leggingsDropChance: 100
+bootsDropChance: 100
+swordDropChance: 100
+bowDropChance: 100
+

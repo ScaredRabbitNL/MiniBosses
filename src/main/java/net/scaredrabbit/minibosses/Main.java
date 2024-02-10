@@ -2,8 +2,11 @@ package net.scaredrabbit.minibosses;
 
 import net.scaredrabbit.minibosses.command.CommandManager;
 import net.scaredrabbit.minibosses.config.CustomConfig;
+import net.scaredrabbit.minibosses.listener.command.DifficultyGUIListener;
 import net.scaredrabbit.minibosses.listener.overworldMobs.zombie.ZombieL;
 import static net.scaredrabbit.minibosses.util.MessageConfigAddDefaults.addDefaults;
+import static net.scaredrabbit.minibosses.util.AddListeners.addListeners;
+import static net.scaredrabbit.minibosses.util.AddCustomConfig.addCustomConfig;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -17,14 +20,10 @@ public final class Main extends JavaPlugin {
         //Default Config
         saveDefaultConfig();
         reloadConfig();
-        //Messages config
-        CustomConfig.setup();
-        addDefaults();
-        CustomConfig.get().options().copyDefaults(true);
-        CustomConfig.save();
+        //Custom Stuff
+        addCustomConfig();
+        addListeners();
 
-
-        getServer().getPluginManager().registerEvents(new ZombieL(), this);
         getCommand("minibosses").setExecutor(new CommandManager());
 
     }

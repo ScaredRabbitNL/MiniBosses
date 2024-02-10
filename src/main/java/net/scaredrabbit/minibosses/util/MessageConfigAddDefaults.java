@@ -10,5 +10,8 @@ public class MessageConfigAddDefaults {
         CustomConfig.get().addDefault("ConfigReload","&aReloaded all of the plugin's config files!");
         CustomConfig.get().addDefault("HelpCommandReload", "&b/minibosses reload &7- &#271C1DReloads all config files that this plugin has");
         CustomConfig.get().addDefault("HelpCommandHelp", "&b/minibosses help &7- &#271C1DShows this message");
+        CustomConfig.get().addDefault("DifficultyGUIClose", "&4Close");
+        CustomConfig.get().addDefault("DifficultyGUIHardcore", "&bHardcore");
+        CustomConfig.get().addDefault("DifficultyGUIUHC", "&5UltraHardCore");
     }
 }

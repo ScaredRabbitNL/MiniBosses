@@ -4,16 +4,15 @@ import net.scaredrabbit.minibosses.Main;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.ZombieVillager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nonnull;
 import java.util.Objects;
 
-public class ZombieL implements Listener {
+public class ZombieVillagerL implements Listener {
 
     private static final Main config = Main.getInstance();
     ItemStack helmet;
@@ -24,12 +23,12 @@ public class ZombieL implements Listener {
     ItemStack sword;
 
     @EventHandler
-    public void onZombieSpawn(CreatureSpawnEvent e) {
+    public void onZombieVillagerSpawn(CreatureSpawnEvent e) {
 
 
-        if (config.getConfig().getBoolean("isZombieMiniBossEnabled")) {
-            if (e.getEntityType() == EntityType.ZOMBIE) {
-                Zombie z = (Zombie) e.getEntity();
+        if (config.getConfig().getBoolean("isZombieVillagerMiniBossEnabled")) {
+            if (e.getEntityType() == EntityType.ZOMBIE_VILLAGER) {
+                ZombieVillager zv = (ZombieVillager) e.getEntity();
                 if (Objects.requireNonNull(config.getConfig().getString("opMobsUseMaterial")).equalsIgnoreCase("NETHERITE")) {
                     helmet = new ItemStack(Material.NETHERITE_HELMET);
                     chestPlate = new ItemStack(Material.NETHERITE_CHESTPLATE);
@@ -53,18 +52,18 @@ public class ZombieL implements Listener {
                     boots.addEnchantment(Enchantment.DURABILITY, 3);
 
 
-                    z.getEquipment().setHelmetDropChance(config.getConfig().getInt("helmetDropChance"));
-                    z.getEquipment().setChestplateDropChance(config.getConfig().getInt("chestPlateDropChance"));
-                    z.getEquipment().setLeggingsDropChance(config.getConfig().getInt("leggingsDropChance"));
-                    z.getEquipment().setBootsDropChance(config.getConfig().getInt("bootsDropChance"));
-                    z.getEquipment().setItemInMainHandDropChance(config.getConfig().getInt("swordDropChance"));
+                    zv.getEquipment().setHelmetDropChance(config.getConfig().getInt("helmetDropChance"));
+                    zv.getEquipment().setChestplateDropChance(config.getConfig().getInt("chestPlateDropChance"));
+                    zv.getEquipment().setLeggingsDropChance(config.getConfig().getInt("leggingsDropChance"));
+                    zv.getEquipment().setBootsDropChance(config.getConfig().getInt("bootsDropChance"));
+                    zv.getEquipment().setItemInMainHandDropChance(config.getConfig().getInt("swordDropChance"));
 
 
 
-                    z.getEquipment().setHelmet(helmet);
-                    z.getEquipment().setChestplate(chestPlate);
-                    z.getEquipment().setLeggings(leggings);
-                    z.getEquipment().setBoots(boots);
+                    zv.getEquipment().setHelmet(helmet);
+                    zv.getEquipment().setChestplate(chestPlate);
+                    zv.getEquipment().setLeggings(leggings);
+                    zv.getEquipment().setBoots(boots);
 
                 } else if (Objects.requireNonNull(config.getConfig().getString("opMobsUseMaterial")).equalsIgnoreCase("DIAMOND")) {
                     helmet = new ItemStack(Material.DIAMOND_HELMET);
@@ -88,16 +87,16 @@ public class ZombieL implements Listener {
                     boots.addEnchantment(Enchantment.MENDING, 1);
                     boots.addEnchantment(Enchantment.DURABILITY, 3);
 
-                    z.getEquipment().setHelmetDropChance(config.getConfig().getInt("helmetDropChance"));
-                    z.getEquipment().setChestplateDropChance(config.getConfig().getInt("chestPlateDropChance"));
-                    z.getEquipment().setLeggingsDropChance(config.getConfig().getInt("leggingsDropChance"));
-                    z.getEquipment().setBootsDropChance(config.getConfig().getInt("bootsDropChance"));
+                    zv.getEquipment().setHelmetDropChance(config.getConfig().getInt("helmetDropChance"));
+                    zv.getEquipment().setChestplateDropChance(config.getConfig().getInt("chestPlateDropChance"));
+                    zv.getEquipment().setLeggingsDropChance(config.getConfig().getInt("leggingsDropChance"));
+                    zv.getEquipment().setBootsDropChance(config.getConfig().getInt("bootsDropChance"));
 
 
-                    z.getEquipment().setHelmet(helmet);
-                    z.getEquipment().setChestplate(chestPlate);
-                    z.getEquipment().setLeggings(leggings);
-                    z.getEquipment().setBoots(boots);
+                    zv.getEquipment().setHelmet(helmet);
+                    zv.getEquipment().setChestplate(chestPlate);
+                    zv.getEquipment().setLeggings(leggings);
+                    zv.getEquipment().setBoots(boots);
 
                 }
 
@@ -108,8 +107,8 @@ public class ZombieL implements Listener {
                     sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
                     sword.addEnchantment(Enchantment.FIRE_ASPECT, 2);
                     sword.addEnchantment(Enchantment.SWEEPING_EDGE, 3);
-                    z.getEquipment().setItemInHandDropChance(config.getConfig().getInt("swordDropChance"));
-                    z.getEquipment().setItemInHand(sword);
+                    zv.getEquipment().setItemInHandDropChance(config.getConfig().getInt("swordDropChance"));
+                    zv.getEquipment().setItemInHand(sword);
                 }
                 if (config.getConfig().getBoolean("isSwordEnabled") && Objects.requireNonNull(config.getConfig().getString("opMobsUseMaterial")).equalsIgnoreCase("DIAMOND")) {
                     sword = new ItemStack(Material.DIAMOND_SWORD);
@@ -118,8 +117,8 @@ public class ZombieL implements Listener {
                     sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
                     sword.addEnchantment(Enchantment.FIRE_ASPECT, 2);
                     sword.addEnchantment(Enchantment.SWEEPING_EDGE, 3);
-                    z.getEquipment().setItemInHandDropChance(config.getConfig().getInt("swordDropChance"));
-                    z.getEquipment().setItemInHand(sword);
+                    zv.getEquipment().setItemInHandDropChance(config.getConfig().getInt("swordDropChance"));
+                    zv.getEquipment().setItemInHand(sword);
                 }
             }
 

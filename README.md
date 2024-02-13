@@ -1,4 +1,4 @@
-[logo](https://github.com/ScaredRabbitYT/resources/blob/patch-1/MiniBosses/MiniBossesBigLogo.png)
+[logo](https://github.com/ScaredRabbitYT/resources/blob/63f960e11e09f6dd40e810791727c9e30c8dc7f2/MiniBosses/MiniBossesBigLogo.png)
 # Mini Bosses
 
 This is a mod that makes all mobs into a sort of miniboss. Buffing their armor of other mob specific features.
